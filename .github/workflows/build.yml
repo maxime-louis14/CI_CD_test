@@ -1,24 +1,4 @@
-name: Build-Test-actions
-
 on: [push]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "14"
-      - name: Cache node_modules
-        id: cache-node_modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('pakage-lock.json') }}
-      - run: node_modules
-      - run: npm install
-      - run: npm run build
-  on: [push]
 
 name: Build & Test
 
@@ -57,3 +37,4 @@ jobs:
         with:
           build: npm run build
           start: npm run start
+  
